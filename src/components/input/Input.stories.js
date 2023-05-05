@@ -30,3 +30,9 @@ export const asNumber = {
     placeholder: "524",
   },
 }
+
+export const asCheckBox = {
+  args: {
+    type: "checkbox",
+  },
+}
