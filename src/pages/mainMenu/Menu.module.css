@@ -16,9 +16,25 @@
   color: #fff;
 }
 
-.opcionesContainer > span {
+.subOpcionContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.subOpcionContainer > span {
   color: #000;
   padding: 0;
+}
+
+.subOpcionTimeContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.subOpcionTimeContainer > span{
+  color: #000;
 }
 
 .opcionesContainer {
@@ -31,6 +47,7 @@
   border-radius: 10px;
   background-color: #bcecec;
   box-shadow: 0 0 0 3px rgba(160, 138, 229, 0.25);
+  width: fit-content;
 }
 
 .opcionesContainer > * {
@@ -43,5 +60,4 @@
   gap: 10px;
   align-items: center;
   justify-content: center;
-  padding: 10px 0 10px 30px;
 }
