@@ -2,6 +2,7 @@ import React from "react"
 import styles from "./Menu.module.css"
 import Input from "../../components/input/Input"
 import DropDown from "../../components/dropDown/DropDown"
+import InputPill from "../../components/inputPill/InputPill"
 
 function Menu() {
   const skins = [
@@ -9,6 +10,16 @@ function Menu() {
     { value: "2", label: "Skin 2" },
     { value: "3", label: "Skin 3" },
   ]
+  const temas = [
+    { id: "1", label: "Tema 1" },
+    { id: "2", label: "Tema 2" },
+    { id: "3", label: "Tema 3" },
+  ]
+
+  const handleSelectInputPill = (tema) => {
+    console.log(tema)
+  }
+
   return (
     <div className={styles.menuContainer}>
       <h1>Menu</h1>
@@ -31,6 +42,10 @@ function Menu() {
         <div className={styles.subOpcionContainer}>
           <span>Seleccione la skin del jugador</span>
           <DropDown opciones={skins} />
+        </div>
+        <div className={styles.subOpcionContainer}>
+          <span>Seleccione el tema del laberinto</span>
+          <InputPill opciones={temas} onSelect={handleSelectInputPill} />
         </div>
       </div>
     </div>
