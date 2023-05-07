@@ -1,8 +1,8 @@
 import React, { useState } from "react"
 import PropTypes, { string } from "prop-types"
-import styles from "./DropDonw.module.css"
+import styles from "./DropDown.module.css"
 
-const DropDonw = ({ opciones }) => {
+const DropDown = ({ opciones }) => {
   const [selectedOption, setSelectedOption] = useState(opciones[0])
 
   const handleOptionChange = (opcion) => {
@@ -10,8 +10,7 @@ const DropDonw = ({ opciones }) => {
   }
 
   return (
-    <div className={styles.dropDonwContainer}>
-      <span htmlFor="dropdown">Selecciona una skin:</span>
+    <div className={styles.dropDownContainer}>
       <select id="dropdown" onChange={handleOptionChange} value={selectedOption.value}>
         {opciones.map((skin) => (
           <option key={skin.value} value={skin.value}>
@@ -23,8 +22,13 @@ const DropDonw = ({ opciones }) => {
   )
 }
 
-DropDonw.propTypes = {
-  opciones: PropTypes.arrayOf(string).isRequired,
+DropDown.propTypes = {
+  opciones: PropTypes.arrayOf(
+    PropTypes.shape({
+      value: string.isRequired,
+      label: string.isRequired,
+    }),
+  ).isRequired,
 }
 
-export default DropDonw
+export default DropDown

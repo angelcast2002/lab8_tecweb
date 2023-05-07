@@ -1,9 +1,14 @@
 import React from "react"
 import styles from "./Menu.module.css"
 import Input from "../../components/input/Input"
-import DropDonw from "../../components/dropDonw/DropDonw"
+import DropDown from "../../components/dropDown/DropDown"
 
 function Menu() {
+  const skins = [
+    { value: "1", label: "Skin 1" },
+    { value: "2", label: "Skin 2" },
+    { value: "3", label: "Skin 3" },
+  ]
   return (
     <div className={styles.menuContainer}>
       <h1>Menu</h1>
@@ -17,13 +22,16 @@ function Menu() {
           <Input name="alto" type="number" placeholder="Alto" />
         </div>
         <div className={styles.subOpcionTimeContainer}>
-          <span>Contra reloj:</span>
+          <span>Contra reloj</span>
           <div className={styles.timerContainer}>
             <Input name="timer" type="number" placeholder="Ingrese el tiempo" />
-            <Input type="checkbox" />
+            <Input name="checkbox" type="checkbox" placeholder="" />
           </div>
         </div>
-        <DropDonw opciones={[{ value: "1", label: "Skin 1" }, { value: "2", label: "Skin 2" }]} />
+        <div className={styles.subOpcionContainer}>
+          <span>Seleccione la skin del jugador</span>
+          <DropDown opciones={skins} />
+        </div>
       </div>
     </div>
   )
