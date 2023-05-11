@@ -3,6 +3,7 @@ import styles from "./Menu.module.css"
 import Input from "../../components/input/Input"
 import DropDown from "../../components/dropDown/DropDown"
 import InputPill from "../../components/inputPill/InputPill"
+import Button from "../../components/button/Button"
 
 function Menu() {
   const skins = [
@@ -46,6 +47,9 @@ function Menu() {
         <div className={styles.subOpcionContainer}>
           <span>Seleccione el tema del laberinto</span>
           <InputPill opciones={temas} onSelect={handleSelectInputPill} />
+        </div>
+        <div className={styles.subOpcionContainer}>
+          <Button label="Jugar" backgroundColor="#fff" size="large" />
         </div>
       </div>
     </div>

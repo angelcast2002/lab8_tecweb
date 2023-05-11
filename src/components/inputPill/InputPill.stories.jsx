@@ -7,7 +7,7 @@ export default {
   argTypes: {},
 }
 
-export const asDefault = {
+export const AsDefault = {
   args: {
     opciones: [
       { value: "1", label: "Tema 1" },

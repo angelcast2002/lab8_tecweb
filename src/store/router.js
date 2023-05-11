@@ -2,6 +2,6 @@ import { createRouter } from "@storeon/router"
 
 export default createRouter([
   ["/", () => ({ page: "Menu" })],
-  ["/login", () => ({ page: "login" })],
+  ["/game", () => ({ page: "Game" })],
   ["/register", () => ({ page: "register" })],
 ])
