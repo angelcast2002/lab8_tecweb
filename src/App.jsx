@@ -4,7 +4,7 @@ import React from "react"
 import Menu from "./pages/mainMenu/Menu"
 import "./App.css"
 
-function App() {
+const App = () => {
   return (
     <StoreContext.Provider value={store}>
       <div className="App">
