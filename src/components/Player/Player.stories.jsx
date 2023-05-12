@@ -7,8 +7,26 @@ export default {
   argTypes: {},
 }
 
-export const asSkin1 = {
+export const AsUp = {
   args: {
-    skin: "/images/svg/dummySkin.svg",
+    skin: "/images/resources/skin1/playerUp.png",
+  },
+}
+
+export const AsDown = {
+  args: {
+    skin: "/images/resources/skin1/playerDown.png",
+  },
+}
+
+export const AsRight = {
+  args: {
+    skin: "/images/resources/skin1/playerRight.png",
+  },
+}
+
+export const AsLeft = {
+  args: {
+    skin: "/images/resources/skin1/playerLeft.png",
   },
 }
