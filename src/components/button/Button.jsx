@@ -2,7 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import style from "./button.module.css"
 
-export const Button = ({ label, backgroundColor, textColor }) => (
+const Button = ({ label, backgroundColor, textColor }) => (
   <div className={style.buttonContainer}>
     <button
       type="button"

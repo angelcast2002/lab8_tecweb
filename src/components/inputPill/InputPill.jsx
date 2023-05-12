@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import PropTypes from "prop-types"
 import styles from "./InputPill.module.css"
 
-function InputPill({ opciones, onSelect }) {
+const InputPill = ({ opciones, onSelect }) => {
   const [selectedOption, setSelectedOption] = useState(null)
 
   return (

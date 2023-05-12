@@ -5,7 +5,7 @@ import DropDown from "../../components/dropDown/DropDown"
 import InputPill from "../../components/inputPill/InputPill"
 import Button from "../../components/button/Button"
 
-function Menu() {
+const Menu = () => {
   const skins = [
     { value: "1", label: "Skin 1" },
     { value: "2", label: "Skin 2" },
