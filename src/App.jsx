@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 /* eslint-disable arrow-body-style */
 import { StoreContext } from "storeon/react"
 import store from "@store"

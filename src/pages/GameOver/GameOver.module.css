@@ -1,0 +1,22 @@
+.menuContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+}
+
+.subOpcionContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 500px;
+  align-items: center;
+  justify-content: center;
+}
+
+.subOpcionContainer h1 {
+  text-align: center;
+}

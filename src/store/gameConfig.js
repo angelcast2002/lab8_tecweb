@@ -3,8 +3,8 @@ const gameConfig = (store) => {
     gameConfig: {
       alto: "4",
       ancho: "4",
-      time: "2",
-      useTime: true,
+      time: "0",
+      useTime: false,
       skin: "0",
       tema: "0",
     },
@@ -19,6 +19,16 @@ const gameConfig = (store) => {
       useTime,
       skin,
       tema,
+    },
+  }))
+  store.on("gameConfig/reset", () => ({
+    gameConfig: {
+      alto: "4",
+      ancho: "4",
+      time: "0",
+      useTime: false,
+      skin: "0",
+      tema: "0",
     },
   }))
 }

@@ -1,5 +1,8 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from "react"
+import { StoreContext } from "storeon/react"
+// eslint-disable-next-line import/no-unresolved
+import store from "@store"
 import Maze from "./Maze"
 
 export default {
@@ -8,10 +11,11 @@ export default {
 }
 
 const Template = (args) => (
-  <div style={{ padding: "20px" }}>
-    <Maze {...args} />
-  </div>
-
+  <StoreContext.Provider value={store}>
+    <div style={{ padding: "20px" }}>
+      <Maze {...args} />
+    </div>
+  </StoreContext.Provider>
 )
 
 export const As2x2 = Template.bind({})
@@ -21,7 +25,8 @@ As2x2.args = {
     ["|", "p", " ", " ", " ", " ", "|"],
     ["+", "-", "-", "+", " ", " ", "+"],
     ["|", " ", " ", " ", " ", "g", "|"],
-    ["+", "-", "-", "+", "-", "-", "+"]],
+    ["+", "-", "-", "+", "-", "-", "+"],
+  ],
   w: 2,
   h: 2,
 }
@@ -37,7 +42,8 @@ As4x4.args = {
     ["|", " ", " ", " ", " ", " ", "|", " ", " ", " ", " ", " ", "|"],
     ["+", " ", " ", "+", "-", "-", "+", "-", "-", "+", "-", "-", "+"],
     ["|", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "g", "|"],
-    ["+", "-", "-", "+", "-", "-", "+", "-", "-", "+", "-", "-", "+"]],
+    ["+", "-", "-", "+", "-", "-", "+", "-", "-", "+", "-", "-", "+"],
+  ],
   w: 4,
   h: 4,
 }

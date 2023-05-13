@@ -11,7 +11,6 @@ import Player from "../Player/Player"
 
 const Maze = ({ json, w, h }) => {
   const { gameConfig } = useStoreon("gameConfig")
-  console.log(gameConfig)
   const skins = {
     0: [
       "/images/resources/skin1/playerUp.png",
@@ -40,7 +39,7 @@ const Maze = ({ json, w, h }) => {
   const [maze, setMaze] = useState(json)
   const [sprite, setSprite] = useState(skins[parseInt(gameConfig.skin, 10)][1])
   const [win, setWin] = useState(false)
-  const [useTimer, setUseTimer] = useState(gameConfig.useTime)
+  const [useTimer] = useState(gameConfig.useTime)
   const [lose, setLose] = useState(false)
   const [time, setTime] = useState([0, 0])
   const [contar, setContar] = useState(false)
@@ -84,7 +83,7 @@ const Maze = ({ json, w, h }) => {
 
   useEffect(() => {
     if (lose === true) {
-      navigate("/")
+      navigate("/gameover")
     }
   }, [lose])
 
