@@ -20,6 +20,12 @@ const Maze = ({ json, w, h }) => {
       "/images/resources/skin2/playerDown.png",
       "/images/resources/skin2/playerLeft.png",
     ],
+    2: [
+      "/images/resources/skin3/playerUp.png",
+      "/images/resources/skin3/playerRight.png",
+      "/images/resources/skin3/playerDown.png",
+      "/images/resources/skin3/playerLeft.png",
+    ],
   }
   const [maze, setMaze] = useState(json)
   const [sprite, setSprite] = useState(skins[0][1])

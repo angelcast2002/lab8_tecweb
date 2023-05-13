@@ -1,19 +1,18 @@
-import React, { useState } from "react"
+/* eslint-disable arrow-body-style */
+import React from "react"
 import PropTypes from "prop-types"
 import styles from "./InputPill.module.css"
 
 const InputPill = ({ opciones, onSelect }) => {
-  const [selectedOption, setSelectedOption] = useState(null)
-
   return (
     <div className={styles.inputPillContainer}>
       {opciones.map((tema) => (
         <button
           key={tema.id}
+          value={tema.id}
           type="button"
           onClick={() => {
-            setSelectedOption(tema.id)
-            onSelect(tema)
+            onSelect(tema.id)
           }}
         >
           {tema.label}

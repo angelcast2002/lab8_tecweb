@@ -2,12 +2,11 @@ import React from "react"
 import PropTypes from "prop-types"
 import style from "./button.module.css"
 
-const Button = ({ label, backgroundColor, textColor }) => (
+const Button = ({
+  label, backgroundColor, textColor, onClick,
+}) => (
   <div className={style.buttonContainer}>
-    <button
-      type="button"
-      style={{ backgroundColor, color: textColor }}
-    >
+    <button type="button" style={{ backgroundColor, color: textColor }} onClick={onClick}>
       {label}
     </button>
   </div>
@@ -17,6 +16,7 @@ Button.propTypes = {
   label: PropTypes.string.isRequired,
   backgroundColor: PropTypes.string,
   textColor: PropTypes.string,
+  onClick: PropTypes.func.isRequired,
 }
 
 Button.defaultProps = {
