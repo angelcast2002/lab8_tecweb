@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 // eslint-disable-next-line import/no-unresolved
 import { navigate } from "@store"
+import { useStoreon } from "storeon/react"
 import styles from "./Menu.module.css"
 import Input from "../../components/input/Input"
 import DropDown from "../../components/dropDown/DropDown"
@@ -8,12 +9,13 @@ import InputPill from "../../components/inputPill/InputPill"
 import Button from "../../components/button/Button"
 
 const Menu = () => {
+  const { dispatch } = useStoreon("gameConfig")
   const [ancho, setAncho] = useState(null)
   const [alto, setAlto] = useState(null)
   const [valueDropDown, setValueDropDown] = useState("0")
   const [valueInputPill, setValueInputPill] = useState("0")
-  const [valueTime, setValueTime] = useState(null)
-  const [valueCheckBox, setValueCheckBox] = useState(null)
+  const [valueTime, setValueTime] = useState(0)
+  const [valueCheckBox, setValueCheckBox] = useState(false)
 
   const optionSkins = [
     { value: "0", label: "Human" },
@@ -21,9 +23,9 @@ const Menu = () => {
     { value: "2", label: "Ninja" },
   ]
   const temas = [
-    { id: "1", label: "Tema 1" },
-    { id: "2", label: "Tema 2" },
-    { id: "3", label: "Tema 3" },
+    { id: "0", label: "Tema 1" },
+    { id: "1", label: "Tema 2" },
+    { id: "2", label: "Tema 3" },
   ]
 
   const handleAncho = (e) => {
@@ -67,6 +69,14 @@ const Menu = () => {
   }
 
   const handleClick = () => {
+    dispatch("gameConfig/set", {
+      alto,
+      ancho,
+      time: valueTime,
+      useTime: valueCheckBox,
+      skin: valueDropDown,
+      tema: valueInputPill,
+    })
     navigate("/game")
   }
 
