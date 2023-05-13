@@ -24,9 +24,9 @@ const InputPill = ({ opciones, onSelect }) => {
 
 InputPill.defaultProps = {
   opciones: [
-    { id: "1", label: "Opción 1" },
-    { id: "2", label: "Opción 2" },
-    { id: "3", label: "Opción 3" },
+    { id: "0", label: "Opción 1" },
+    { id: "1", label: "Opción 2" },
+    { id: "2", label: "Opción 3" },
   ],
 }
 
