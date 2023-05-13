@@ -8,7 +8,6 @@ const Page = () => {
   const { [routerKey]: route } = useStoreon(routerKey)
 
   let Component = null
-  console.log(route)
   switch (route.match.page) {
     case "menu":
       Component = <Menu />

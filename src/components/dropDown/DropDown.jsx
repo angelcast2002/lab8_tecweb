@@ -1,17 +1,12 @@
-import React, { useState } from "react"
+/* eslint-disable arrow-body-style */
+import React from "react"
 import PropTypes, { string } from "prop-types"
 import styles from "./DropDown.module.css"
 
-const DropDown = ({ opciones }) => {
-  const [selectedOption, setSelectedOption] = useState(opciones[0])
-
-  const handleOptionChange = (opcion) => {
-    setSelectedOption(opcion)
-  }
-
+const DropDown = ({ opciones, value, onChange }) => {
   return (
     <div className={styles.dropDownContainer}>
-      <select id="dropdown" onChange={handleOptionChange} value={selectedOption.value}>
+      <select id="dropdown" onChange={onChange} value={value}>
         {opciones.map((skin) => (
           <option key={skin.value} value={skin.value}>
             {skin.label}
@@ -29,6 +24,8 @@ DropDown.propTypes = {
       label: string.isRequired,
     }),
   ).isRequired,
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
 }
 
 export default DropDown
