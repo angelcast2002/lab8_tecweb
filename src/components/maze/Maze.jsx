@@ -89,6 +89,7 @@ const Maze = ({ json, w, h }) => {
       }
 
       if (newMaze[y + dy][x + dx] === "g") {
+        clearInterval(interval.current)
         setWin(true)
       }
       return newMaze
