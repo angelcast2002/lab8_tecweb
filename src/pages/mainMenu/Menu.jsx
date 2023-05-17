@@ -69,10 +69,12 @@ const Menu = () => {
   }
 
   const handleClick = () => {
+    console.log("alto", alto)
+    console.log("ancho", ancho)
     dispatch("gameConfig/set", {
       alto,
       ancho,
-      time: valueTime,
+      time: valueTime * 60,
       useTime: valueCheckBox,
       skin: valueDropDown,
       tema: valueInputPill,

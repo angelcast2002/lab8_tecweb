@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState, useRef } from "react"
 import { useStoreon } from "storeon/react"
 // eslint-disable-next-line import/no-unresolved
 import { navigate } from "@store"
@@ -39,47 +39,27 @@ const Maze = ({ json, w, h }) => {
   const [maze, setMaze] = useState(json)
   const [sprite, setSprite] = useState(skins[parseInt(gameConfig.skin, 10)][1])
   const [win, setWin] = useState(false)
-  const [useTimer] = useState(gameConfig.useTime)
   const [lose, setLose] = useState(false)
-  const [time, setTime] = useState([0, 0])
-  const [contar, setContar] = useState(false)
+  const [time, setTime] = useState(gameConfig.time)
+  const interval = useRef(null)
+  const keyListener = useRef(null)
+
+  const timerToMinutesAndSeconds = () => {
+    const minutos = Math.floor(time / 60)
+    const segundosRestantes = time % 60
+    return [minutos, segundosRestantes]
+  }
 
   const timer = () => {
-    if (time[0] > 0 || time[1] > 0) {
-      if (time[1] === 0) {
-        setTime([time[0] - 1, 59])
-      } else {
-        setTime([time[0], time[1] - 1])
+    setTime((oldTime) => {
+      if (oldTime === 0) {
+        setLose(true)
+        clearInterval(interval.current)
+        return 0
       }
-    } else {
-      setLose(true)
-    }
+      return oldTime - 1
+    })
   }
-  useEffect(() => console.log("useEffect", time), [time])
-  const formatTime = (mins) => {
-    const hours = Math.floor(mins / 60)
-    const minutes = mins % 60
-    const seconds = (mins - hours * 60 - minutes) * 60
-    setTime([minutes, seconds])
-  }
-
-  useEffect(() => {
-    formatTime(parseInt(gameConfig.time, 10))
-  }, [])
-
-  useEffect(() => {
-    setContar(true)
-  }, [])
-
-  useEffect(() => {
-    if (contar === true) {
-      if (useTimer === true) {
-        setInterval(() => {
-          timer()
-        }, 1000)
-      }
-    }
-  }, [contar])
 
   useEffect(() => {
     if (lose === true) {
@@ -137,9 +117,20 @@ const Maze = ({ json, w, h }) => {
         default:
       }
     }
-    document.addEventListener("keydown", handleKeyDown)
+    if (gameConfig.useTime === true && interval.current === null) {
+      interval.current = setInterval(() => {
+        timer()
+      }, 1000)
+    }
+    if (keyListener.current === null) {
+      keyListener.current = handleKeyDown
+      document.addEventListener("keydown", handleKeyDown)
+    }
     return () => {
-      document.removeEventListener("keydown", handleKeyDown)
+      if (keyListener.current !== null) {
+        document.removeEventListener("keydown", keyListener.current)
+        keyListener.current = null
+      }
     }
   }, [])
 
@@ -147,22 +138,13 @@ const Maze = ({ json, w, h }) => {
     navigate("/")
   }
 
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    })
-  }
-
-  useEffect(() => {
-    scrollToTop()
-  }, [win])
+  const minutesSeconds = timerToMinutesAndSeconds()
 
   return (
     <div className={style.generalMazeContainer}>
-      {useTimer ? (
+      {gameConfig.useTime ? (
         <div className={style.timer}>
-          <h1>{`${time[0]}:${time[1]}`}</h1>
+          <h1>{`${minutesSeconds[0]}:${minutesSeconds[1]}`}</h1>
         </div>
       ) : null}
       {!win ? (
